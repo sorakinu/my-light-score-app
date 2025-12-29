@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+import random
 
 # ===========================
 # 光スコア計算関数
@@ -54,9 +54,37 @@ if st.button("✨ 光スコアを計算する", use_container_width=True):
     
     # 結果表示
     st.subheader("■ 診断結果")
-    st.metric(label="今日の光スコア（1〜5）", value=f"{score} / 5.0")
+   import random  # 行頭（import streamlit の次あたり）に追加してください
+
+# --- 中略（スライダーなどの入力部分） ---
+
+# --- 計算ロジック ---
+# 合計点（最大30点）を5点満点に変換
+total_score = stress + sleep + exercise
+display_score = round((total_score / 30) * 5, 2)
+
+st.subheader("■ 診断結果")
+st.write(f"今日の光スコア：  **{display_score} / 5.0**")
+
+# --- スコアに応じたアドバイスの切り替え ---
+if display_score >= 4.0:
+    msg = "素晴らしい！今のあなたは光り輝いています。そのままのあなたで進んでください。"
+    st.balloons() # 高スコアの時だけ風船を飛ばす演出
     
-    st.info(f"**メッセージ:** \n\n {advice}")
+elif display_score >= 2.5:
+    msg = "まずまずの調子です。少しだけ自分のための時間を作ってみましょう。"
+    
+else:
+    # 2.5未満（低い時）に、あなたが考えた4つからランダムで表示
+    advices = [
+        "【おまじない】一番、深呼吸してリラックス。ゆっくり息を吐いてみて。",
+        "【おまじない】二番、自分の好きな食べ物や音楽など、好きなものを何でもいいから身につけて（取り入れて）みて！",
+        "【おまじない】三番、魔法の言葉だよ。「大丈夫」。声に出してみて。",
+        "【おまじない】四番、ふぅーっと一息ついて、空を見上げてごらん。"
+    ]
+    msg = random.choice(advices) # 4つの中から1つをランダムに選ぶ
+
+st.info(f"**今のあなたへのメッセージ:** \n\n {msg}") 
 
 st.write("---")
 st.caption("© 2024 Singularity Education")
