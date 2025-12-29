@@ -54,12 +54,10 @@ if st.button("✨ 光スコアを計算する", use_container_width=True):
     
     # 結果表示
     st.subheader("■ 診断結果")
-   import random  # 行頭（import streamlit の次あたり）に追加してください
+   
 
-# --- 中略（スライダーなどの入力部分） ---
 
-# --- 計算ロジック ---
-# 合計点（最大30点）を5点満点に変換
+
 total_score = stress + sleep + exercise
 display_score = round((total_score / 30) * 5, 2)
 
