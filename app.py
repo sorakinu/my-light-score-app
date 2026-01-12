@@ -1,4 +1,4 @@
-Import streamlit as st
+import streamlit as st
 import random
 
 def calculate_light_score(stress, focus, calm, poem):
@@ -54,4 +54,5 @@ if st.button("✨ 光スコアを計算する"):
     
     st.write("---")
     st.caption("Powered by Singularity Education")
+
 
