@@ -33,7 +33,7 @@ def calculate_light_score(stress, focus, calm, poem):
 # アプリUI
 st.set_page_config(page_title="光スコア診断アプリ", page_icon="✨", layout="centered")
 st.title("✨ 光スコア診断アプリ")
-st.write("ストレス・集中・静けさ・詩から、今日の"光の度合い"を算出します。")
+st.write('ストレス・集中・静けさ・詩から、今日の"光の度合い"を算出します')
 
 st.subheader("■ 今日の状態を入力してください")
 stress = st.slider("ストレス（0〜5）", 0, 5, 2)
@@ -54,5 +54,6 @@ if st.button("✨ 光スコアを計算する"):
     
     st.write("---")
     st.caption("Powered by Singularity Education")
+
 
 
