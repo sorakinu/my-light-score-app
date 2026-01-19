@@ -2,8 +2,10 @@ import streamlit as st
 import random
 
 def calculate_light_score(stress, focus, calm, poem):
-    # スコア計算
-    raw_score = ((focus + calm) - stress) / 3
+    # スコア計算を修正
+    # ストレスを逆転させて、3つの平均を取る方式に変更
+    reversed_stress = 5 - stress  # ストレスを反転（高いほど良い状態に）
+    raw_score = (reversed_stress + focus + calm) / 3
     score = round(max(1, min(5, raw_score)), 2)
     
     # アドバイス生成
@@ -54,6 +56,7 @@ if st.button("✨ 光スコアを計算する"):
     
     st.write("---")
     st.caption("Powered by Singularity Education")
+
 
 
 
